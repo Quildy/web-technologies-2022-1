@@ -1,7 +1,8 @@
+@import 'assets/style/fonts.css';
+
 body {
     margin: 0;
 }
-
 
 @font-face {
     font-family: 'HelveticaNeueCyr';
