@@ -13,7 +13,7 @@ function pickPropArray(students, prop)
     const res = [];
     for (let i =0; i<students.length; i++)
     {
-        if (students[i][prop] !== undefined)
+        if (prop in students[i])
         {
             res.push(students[i][prop]);
         }
