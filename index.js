@@ -3,12 +3,12 @@ import ListItems from "./components/list-items.js";
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init)
 } else {
-  init()
+  init();
 }
 
 function init() {
   const data = {
-    name: 'Каталог товаров',
+    name: 'Каталог товаров (Нужный)',
     hasChildren: true,
     items: [
       {
@@ -16,32 +16,32 @@ function init() {
         hasChildren: true,
         items: [
           {
-            name: 'Ulgran1',
+            name: 'Швабры',
             hasChildren: true,
             items: [
               {
-                name: 'SMT1',
+                name: 'Товар швабра 1',
                 hasChildren: false,
                 items: []
               },
               {
-                name: 'SMT2',
+                name: 'Товар швабра 2',
                 hasChildren: false,
                 items: []
               }
             ]
           },
           {
-            name: 'Ulgran2',
+            name: 'Порошки',
             hasChildren: true,
             items: [
               {
-                name: 'SMT3',
+                name: 'Товар порошок 1',
                 hasChildren: false,
                 items: []
               },
               {
-                name: 'SMT4',
+                name: 'Товар порошок 2',
                 hasChildren: false,
                 items: []
               }
@@ -53,16 +53,16 @@ function init() {
         hasChildren: true,
         items: [
           {
-            name: 'Ulgran3',
+            name: 'Питьевые',
             hasChildren: true,
             items: [
               {
-                name: 'SMT5',
+                name: 'Питьевой фильтр 1',
                 hasChildren: false,
                 items: []
               },
               {
-                name: 'SMT6',
+                name: 'Питьевой фильтр 2',
                 hasChildren: false,
                 items: []
               }
