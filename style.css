@@ -7,3 +7,26 @@ body {
 html {
     font-family: 'HelveticaNeueCyr', sans-serif;
 }
+
+button
+{
+    font-size: 21px;
+    color: darkred;
+    
+    border:1px solid darkred;
+}
+
+.button:hover
+{
+    border:1px solid brown; /* цвет обводки */
+}
+
+.tic-tac-toe__current-move
+{
+    color: darkred;
+}
+
+.tic-tac-toe-inner
+{
+    color: darkred;
+}

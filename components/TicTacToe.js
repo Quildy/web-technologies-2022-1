@@ -47,6 +47,10 @@ export const TicTacToe = {
    * Функция инициализации слушателей события клика по ячейке
    */
   initListeners() {
+    let nowin = 0;
+    let winX = 0;
+    let winY = 0;
+    let roundCount = 0;
     this.boxes.forEach(box => {
       box.addEventListener('click', event => {
         // проверка не закончилась ли игра и не пустой ли блок
@@ -56,6 +60,7 @@ export const TicTacToe = {
         ) {
           return
         }
+        
 
         // изменение значения элемента в матрице
         this.setBlockValue(event.target)
@@ -74,16 +79,30 @@ export const TicTacToe = {
           this.setGameEndStatus()
 
           setTimeout(() => {
-            alert('Конец игры - Ничья!')
+            nowin++;
+            roundCount++;
+            alert('Раунд ' + roundCount + ' - Ничья! \n\r Побед X: ' + winX + '\n\r Побед' +
+                ' Y: ' + winY + '\n\r Без победителя: ' + nowin)
           })
           return
         }
+        
 
         // проверка статуса игры
         if (this.isGameEnd) {
           // вывод информации о победителе
           setTimeout(() => {
-            alert('Победил ' + this.getCurrentTurnValue())
+            if (this.getCurrentTurnValue() === 'X')
+            {
+              winX++;
+            }
+            if (this.getCurrentTurnValue() === '0')
+            {
+              winY++;
+            }
+            roundCount++;
+            alert('Раунд ' + roundCount + ' - Победил ' + this.getCurrentTurnValue() + '!\n\r Побед X: ' + winX + '\n\r Побед' +
+                ' Y: ' + winY + '\n\r Без победителя: ' + nowin)
           })
         } else {
           // изменить значение текущего хода в объекте
@@ -127,6 +146,19 @@ export const TicTacToe = {
    * Сброс данных и очищение дом дерева
    */
   restartGame() {
+    this.isGameEnd = false
+    this.isXTurn = true;
+    for (let i = 0; i < this.matrix.length; i++)
+    {
+      for (let k = 0; k < this.matrix.length; k++)
+      {
+        this.matrix[i][k] = null;
+      }
+    }
+    for (let box of this.boxes)
+    {
+      box.innerText = '';
+    }
   },
   
   /**
@@ -136,7 +168,10 @@ export const TicTacToe = {
    */
   isBlockEmpty(target) {
     const [row, col] = this.getBlockPosition(target)
-    
+    if (this.matrix[row - 1][col - 1])
+    {
+      alert('Данный блок занят, выберите другой!');
+    }
     return !this.matrix[row - 1][col - 1]
   },
 
@@ -211,7 +246,7 @@ export const TicTacToe = {
    * Изменение текущего хода в данных
    */
   changeTurnValue() {
-
+    this.isXTurn = !this.isXTurn;
   },
 
   /**
@@ -238,5 +273,6 @@ export const TicTacToe = {
    * Установить статус об окончании игры
    */
   setGameEndStatus() {
+    this.isGameEnd = !this.isGameEnd;
   }
 }
